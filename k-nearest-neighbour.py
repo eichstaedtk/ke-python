@@ -42,8 +42,11 @@ colorNorm = normalize(df['color_score'], minColor, maxColor)
 normValues = np.column_stack((massNorm, colorNorm))
 
 # Calculate Distance
-point = [[normalize(190, minMass, maxMass), normalize(0.55, minColor, maxColor)]]
-fruitNeighbours = get_neighbors(normValues, labelsFruit, point, 60, distancefunc=distance)
+apple = [[normalize(190, minMass, maxMass), normalize(0.55, minColor, maxColor)]]
+orange = [[normalize(150, minMass, maxMass), normalize(0.75, minColor, maxColor)]]
+lemmon = [[normalize(170, minMass, maxMass), normalize(0.72, minColor, maxColor)]]
+
+fruitNeighbours = get_neighbors(normValues, labelsFruit, lemmon, 60, distancefunc=distance)
 
 # Sort
 fruitNeighboursSorted = sorted(fruitNeighbours)
