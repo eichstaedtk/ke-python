@@ -6,7 +6,7 @@ from sklearn import datasets
 # Daten einlesen
 iris = datasets.load_iris()
 data = iris.data
-labels = iris.target
+label = iris.target
 
 
 def distance(instance1, instance2):
@@ -35,19 +35,18 @@ def vote(neighbors):
     return class_counter.most_common(1)[0][0]
 
 
-# 1
+# 1 Example
 iris_versicolor = [7.0, 3.2, 4.7, 1.4]
-# 0
+# 0 Example
 iris_setosa = [5.1, 3.5, 1.4, 0.2]
-# 2
+# 2 Example
 iris_virginica = [6.3, 3.3, 6.0, 2.5]
 
+# Exercise Value
 iris_example = [4.8, 2.5, 5.3, 2.4]
 
-irisValues = get_neighbors(data, labels, iris_example, 150, distancefunc=distance)
+irisValues = get_neighbors(data, label, iris_example, 150, distancefunc=distance)
 
 # Aggregate
-voting = vote(irisValues[0:10])
-
-print(np.max(voting))
+print(np.max(vote(irisValues[0:10])))
 
