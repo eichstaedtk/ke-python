@@ -35,11 +35,11 @@ def vote(neighbors):
     return class_counter.most_common(1)[0][0]
 
 
-# 1 Example
+# 1 Example for Testing
 iris_versicolor = [7.0, 3.2, 4.7, 1.4]
-# 0 Example
+# 0 Example for Testing
 iris_setosa = [5.1, 3.5, 1.4, 0.2]
-# 2 Example
+# 2 Example for Testing
 iris_virginica = [6.3, 3.3, 6.0, 2.5]
 
 # Exercise Value
