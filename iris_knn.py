@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 from collections import Counter
 from sklearn import datasets
 
@@ -10,7 +9,6 @@ label = iris.target
 
 
 def distance(instance1, instance2):
-    """ Calculates the Eucledian distance between two instances"""
     return np.linalg.norm(np.subtract(instance1, instance2))
 
 
