@@ -1,22 +1,26 @@
 import pandas as pd
 import numpy as np
 from collections import Counter
+from math import sqrt
 
 
 # Normalize
 def normalize(value, minimum, maximum):
-    return (value-minimum) / (maximum-minimum)
+    return (value - minimum) / (maximum - minimum)
 
 
-# Euclidian Distance
-def distance(instance1, instance2):
-    return np.linalg.norm(np.subtract(instance1, instance2))
+# Calculate Euclidian Distance
+def euclidean_distance(value1, value2):
+    edistance = 0.0
+    for x, y in np.nditer([value1, value2]):
+        edistance += (y - x)**2
+    return sqrt(edistance)
 
 
-def get_neighbors(training_set,
-                  labels,
-                  test_instance,
-                  k, distancefunc):
+def calculate_distance(training_set,
+                       labels,
+                       test_instance,
+                       k, distancefunc):
     distances = []
     for index in range(len(training_set)):
         dist = distancefunc(test_instance, training_set[index])
@@ -25,7 +29,7 @@ def get_neighbors(training_set,
     return neighbors
 
 
-def vote(neighbors):
+def aggregate(neighbors):
     class_counter = Counter()
     for neighbor in neighbors:
         class_counter[neighbor[1]] += 1
@@ -46,13 +50,13 @@ apple = [[normalize(190, minMass, maxMass), normalize(0.55, minColor, maxColor)]
 orange = [[normalize(150, minMass, maxMass), normalize(0.75, minColor, maxColor)]]
 lemmon = [[normalize(170, minMass, maxMass), normalize(0.72, minColor, maxColor)]]
 
-fruitNeighbours = get_neighbors(normValues, labelsFruit, lemmon, 60, distancefunc=distance)
+fruitNeighbours = calculate_distance(normValues, labelsFruit, lemmon, 60, distancefunc=euclidean_distance)
 
 # Sort
 fruitNeighboursSorted = sorted(fruitNeighbours)
 
 # Aggregate
-vote = vote(fruitNeighboursSorted[0:10])
+vote = aggregate(fruitNeighboursSorted[0:10])
 
 # Take Max to find Class
 print(np.max(vote))
