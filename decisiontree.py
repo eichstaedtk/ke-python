@@ -23,6 +23,7 @@ export_graphviz(
          tree_clf,
          out_file="buycomputer.dot",
          feature_names=['Age', 'Income', 'Student', 'Credit_rating'],
+         class_names=['Buy', 'Not_Buy'],
          rounded=True,
          filled=True,
  )
