@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="Age <= 0.5\nentropy = 0.971\nsamples = 20\nvalue = [8, 12]", fillcolor="#bddef6"] ;
+1 [label="entropy = 0.0\nsamples = 6\nvalue = [0, 6]", fillcolor="#399de5"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Student <= 0.5\nentropy = 0.985\nsamples = 14\nvalue = [8, 6]", fillcolor="#f8e0ce"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="Age <= 1.5\nentropy = 0.544\nsamples = 8\nvalue = [7, 1]", fillcolor="#e99355"] ;
+2 -> 3 ;
+4 [label="entropy = 0.0\nsamples = 6\nvalue = [6, 0]", fillcolor="#e58139"] ;
+3 -> 4 ;
+5 [label="Credit_rating <= 0.5\nentropy = 1.0\nsamples = 2\nvalue = [1, 1]", fillcolor="#ffffff"] ;
+3 -> 5 ;
+6 [label="entropy = 0.0\nsamples = 1\nvalue = [1, 0]", fillcolor="#e58139"] ;
+5 -> 6 ;
+7 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 1]", fillcolor="#399de5"] ;
+5 -> 7 ;
+8 [label="Income <= 1.5\nentropy = 0.65\nsamples = 6\nvalue = [1, 5]", fillcolor="#61b1ea"] ;
+2 -> 8 ;
+9 [label="Credit_rating <= 0.5\nentropy = 0.918\nsamples = 3\nvalue = [1, 2]", fillcolor="#9ccef2"] ;
+8 -> 9 ;
+10 [label="entropy = 0.0\nsamples = 1\nvalue = [1, 0]", fillcolor="#e58139"] ;
+9 -> 10 ;
+11 [label="entropy = 0.0\nsamples = 2\nvalue = [0, 2]", fillcolor="#399de5"] ;
+9 -> 11 ;
+12 [label="entropy = 0.0\nsamples = 3\nvalue = [0, 3]", fillcolor="#399de5"] ;
+8 -> 12 ;
+}
