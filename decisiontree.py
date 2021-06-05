@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
-from sklearn import preprocessing
 from sklearn.tree import export_graphviz
 import category_encoders as ce
 
