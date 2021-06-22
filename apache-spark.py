@@ -6,11 +6,10 @@ if __name__ == "__main__":
     # create Spark context with necessary configuration
     sc = SparkContext("local", "PySpark Word Count Exmaple")
 
-    # read data from text file and split each line into words
-    words = sc.textFile("/Users/konrad/Sourcecode/ke-python/t8.shakespeare.txt").map( lambda x: x.replace(',',' ').replace('.',' ').replace('-',' ').lower())
+    shakespeare = sc.textFile("t8.shakespeare.txt").map(lambda x: x.replace(',', ' ').replace('.', ' ').replace('-', ' ').lower())
 
     # count the occurrence of each word
-    counts = words.flatMap(lambda line: line.split(" ")) \
+    counts = shakespeare.flatMap(lambda line: line.split(" ")) \
         .map(lambda word: (word, 1)) \
         .reduceByKey(lambda a, b: a + b)
 
