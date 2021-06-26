@@ -1,6 +1,4 @@
-import sys
-from pyspark import SparkContext, SparkConf
-import collections
+from pyspark import SparkContext
 
 if __name__ == "__main__":
     # create Spark context with necessary configuration
@@ -13,13 +11,9 @@ if __name__ == "__main__":
         .map(lambda word: (word, 1)) \
         .reduceByKey(lambda a, b: a + b)
 
-    # save the counts to output
     sorted_counts = counts.sortBy(lambda wordCounts: wordCounts[1], ascending=False)
-    # the #24 most used word in Shakespeares writings
-    # the first one is not a word
+
     i = 0
     for word, count in sorted_counts.collect()[0:25]:
         print("{} : {} : {} ".format(i, word, count))
         i += 1
-
-
